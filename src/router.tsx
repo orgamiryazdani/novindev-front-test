@@ -4,6 +4,7 @@ import Users from "./pages/users";
 import Login from "./pages/login";
 import CreateUser from "./pages/create-user";
 import { ProtectedLayout, PublicRoute } from "./components/auth/auth";
+import User from "./pages/user";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         children: [
           { path: "/", element: <Users /> },
           { path: "/create-user", element: <CreateUser /> },
+          { path: "/user/:id", element: <User /> },
         ],
       },
     ],

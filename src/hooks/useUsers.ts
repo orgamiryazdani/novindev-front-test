@@ -1,5 +1,5 @@
 import { useMutation, UseMutationResult, useQuery, UseQueryResult } from "@tanstack/react-query";
-import { deleteUserApi, getUserApi, getUsersApi } from "../services/users-service";
+import { createUserApi, deleteUserApi, getUserApi, getUsersApi } from "../services/users-service";
 import { User, Users } from "../types/users.interface";
 import { queryClient } from "../lib/react-query";
 import toast from "react-hot-toast";
@@ -31,6 +31,18 @@ export const useDeleteUser = () => {
         mutationFn: deleteUserApi,
         onSuccess: () => {
             toast.success('User deleted successfully')
+        },
+        onError: (error) => {
+            toast.error(error.message)
+        },
+    });
+};
+
+export const useCreateUser = () => {
+    return useMutation({
+        mutationFn: createUserApi,
+        onSuccess: () => {
+            toast.success('Create user successfully')
         },
         onError: (error) => {
             toast.error(error.message)

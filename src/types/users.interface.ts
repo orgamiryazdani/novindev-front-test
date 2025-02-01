@@ -19,3 +19,15 @@ export interface User {
         avatar: string;
     }
 }
+
+export type CreateUserData = {
+    name: string;
+    job: string;
+}
+
+export interface CreateUserResponse {
+    name: string;
+    job: string;
+    id: string;
+    createdAt: string;
+}

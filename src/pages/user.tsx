@@ -16,7 +16,7 @@ const User: React.FC = () => {
   return (
     <div className='flex items-center justify-center w-full h-full'>
       <div className='bg-gray-500 md:w-96 h-96 w-72 rounded-md flex flex-col items-center justify-between p-3'>
-        <div className='text-xl font-bold'>کاربر شماره : {data?.data.id}</div>
+        <div className='text-xl font-bold'>User Id : {data?.data.id}</div>
         <img
           className='w-32 h-32 rounded-full'
           src={data?.data.avatar}

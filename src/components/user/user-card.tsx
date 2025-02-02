@@ -31,7 +31,10 @@ const UserCard: React.FC<UserCardProps> = ({
         />
       </Link>
       <div className='flex justify-between font-bold h-10 items-end w-full gap-x-3'>
-        <EditUser first_name={first_name} />
+        <EditUser
+          first_name={first_name}
+          id={id}
+        />
         <DeleteUser id={id} />
       </div>
     </div>

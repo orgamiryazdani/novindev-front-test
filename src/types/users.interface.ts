@@ -7,7 +7,7 @@ export interface Users {
         avatar: string;
     }[];
     page: number;
-    per_page: number;
+    total_pages: number;
 }
 
 export interface User {

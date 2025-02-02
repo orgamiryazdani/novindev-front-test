@@ -20,11 +20,13 @@ const CreateUser: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormValues>({ resolver: yupResolver(schema) });
   const { mutateAsync, isPending } = useCreateUser();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     await mutateAsync(data);
+    reset();
   };
 
   return (
@@ -37,6 +39,7 @@ const CreateUser: React.FC = () => {
         register={register}
         required
         error={errors.name}
+        autoFocus={true}
       />
       <Input
         label='job'

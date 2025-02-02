@@ -1,7 +1,6 @@
-import { useMutation, UseMutationResult, useQuery, UseQueryResult } from "@tanstack/react-query";
-import { createUserApi, deleteUserApi, getUserApi, getUsersApi } from "../services/users-service";
+import { useMutation, useQuery, UseQueryResult } from "@tanstack/react-query";
+import { createUserApi, deleteUserApi, getUserApi, getUsersApi, updateUserApi } from "../services/users-service";
 import { User, Users } from "../types/users.interface";
-import { queryClient } from "../lib/react-query";
 import toast from "react-hot-toast";
 
 export const useGetUsers = ({ page }: { page: number }) => {
@@ -43,6 +42,18 @@ export const useCreateUser = () => {
         mutationFn: createUserApi,
         onSuccess: () => {
             toast.success('Create user successfully')
+        },
+        onError: (error) => {
+            toast.error(error.message)
+        },
+    });
+};
+
+export const useUpdateUser = () => {
+    return useMutation({
+        mutationFn: updateUserApi,
+        onSuccess: () => {
+            toast.success('update user successfully')
         },
         onError: (error) => {
             toast.error(error.message)

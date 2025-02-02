@@ -10,20 +10,6 @@ const httpService = axios.create({
   },
 });
 
-httpService.interceptors.request.use(
-  async (config) => {
-
-    // if (session?.user?.accessToken) {
-    // config.headers.Authorization = `token ${session.user.accessToken}`;
-    // }
-
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
 httpService.interceptors.response.use(
   (response) => {
     return response;

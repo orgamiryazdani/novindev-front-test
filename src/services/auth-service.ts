@@ -9,6 +9,6 @@ type LoginResponse = {
     token: string;
 };
 
-export const loginUsersApi = (data: LoginProps): Promise<LoginResponse> => {
+export const loginUsersApi = (data: LoginProps) => {
     return createData<LoginProps, LoginResponse>("/login", data);
 };

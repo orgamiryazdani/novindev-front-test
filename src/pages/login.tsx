@@ -2,8 +2,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Input } from "../components/input";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginUsersApi } from "../services/auth-service";
 import { useNavigate } from "react-router-dom";
+import { useLoginUser } from "../hooks/useAuth";
+import { Loading } from "../components/loading";
 
 const schema = yup.object({
   email: yup
@@ -28,9 +29,10 @@ const Login: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({ resolver: yupResolver(schema) });
+  const { mutateAsync, isPending } = useLoginUser();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    const { token } = await loginUsersApi(data);
+    const { token } = await mutateAsync(data);
     if (token) {
       localStorage.setItem("accessToken", token);
       naviagate("/");
@@ -48,19 +50,20 @@ const Login: React.FC = () => {
           register={register}
           required
           error={errors.email}
-          placeholder="eve.holt@reqres.in"
+          placeholder='eve.holt@reqres.in'
+          autoFocus
         />
         <Input
           label='password'
           register={register}
           required
           error={errors.password}
-          placeholder="cityslicka"
+          placeholder='cityslicka'
         />
         <button
           type='submit'
           className='w-60 bg-sky-700 h-10 rounded-md cursor-pointer'>
-          login
+          {isPending ? <Loading /> : "login"}
         </button>
       </div>
     </form>

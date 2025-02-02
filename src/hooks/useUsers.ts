@@ -31,9 +31,6 @@ export const useDeleteUser = () => {
         onSuccess: () => {
             toast.success('User deleted successfully')
         },
-        onError: (error) => {
-            toast.error(error.message)
-        },
     });
 };
 
@@ -43,9 +40,6 @@ export const useCreateUser = () => {
         onSuccess: () => {
             toast.success('Create user successfully')
         },
-        onError: (error) => {
-            toast.error(error.message)
-        },
     });
 };
 
@@ -54,9 +48,6 @@ export const useUpdateUser = () => {
         mutationFn: updateUserApi,
         onSuccess: () => {
             toast.success('update user successfully')
-        },
-        onError: (error) => {
-            toast.error(error.message)
         },
     });
 };

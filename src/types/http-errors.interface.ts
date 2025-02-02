@@ -1,5 +1,5 @@
 interface Problem {
-    message: string;
+    error: string;
     status: number;
     detail?: string;
     errors?: Record<string, string[]>;
